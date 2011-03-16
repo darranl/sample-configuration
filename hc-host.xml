@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<host name="local_hc" xmlns="urn:jboss:domain:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:jboss:domain:1.0 jboss_7_0.xsd">
+    <management-interfaces>
+        <native-interface interface="public" port="9899"/>
+        <http-interface interface="public" port="9890"/>
+    </management-interfaces>
+    <domain-controller>
+        <remote host="127.0.0.1" port="9999"/>
+    </domain-controller>
+    <interfaces>
+        <interface name="loopback">
+            <inet-address value="127.0.0.1"/>
+        </interface>
+        <interface name="public">
+            <any-ipv4-address/>
+        </interface>
+    </interfaces>
+    <jvms>
+        <jvm name="default">
+            <heap size="64m" max-size="128m"/>
+        </jvm>
+    </jvms>
+    <servers>
+        <server name="server-one" group="main-server-group" auto-start="true">
+            <jvm name="default"/>
+        </server>
+        <server name="server-two" group="main-server-group" auto-start="true">
+            <jvm name="default">
+                <heap size="64m" max-size="256m"/>
+            </jvm>
+            <socket-binding-group ref="standard-sockets" port-offset="150"/>
+        </server>
+        <server name="server-three" group="other-server-group" auto-start="false">
+            <socket-binding-group ref="standard-sockets" port-offset="250"/>
+        </server>
+    </servers>
+</host>
