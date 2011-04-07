@@ -144,6 +144,7 @@ while true; do
          -- \
          \"-Dorg.jboss.boot.log.file=$JBOSS_HOME/domain/log/host-controller/boot.log\" \
          \"-Dlogging.configuration=file:$JBOSS_HOME/domain/configuration/logging.properties\" \
+         \"-Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y\" \
          $JAVA_OPTS \
          -- \
          -default-jvm \"$JAVA\" \
