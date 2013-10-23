@@ -307,7 +307,11 @@
                         <module-option name="baseFilter" value="(uid={0})"/>
 
                         <module-option name="rolesCtxDN" value="dc=principal-to-group,dc=wildfly,dc=org"/>
-                        <module-option name="roleFilter" value="(distinguishedName={1})"/>
+                        <!--
+                        This slightly more complex filter is because memberOf extends distinguishedName, as a result memberOf is 
+                        causing some additional matches.
+                        -->
+                        <module-option name="roleFilter" value="(&amp;(distinguishedName={1})(!(memberOf={1})))"/>
         
                         <module-option name="roleAttributeID" value="memberOf"/>
                         <module-option name="roleAttributeIsDN" value="true"/>
