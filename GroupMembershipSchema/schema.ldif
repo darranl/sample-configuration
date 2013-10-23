@@ -1,0 +1,93 @@
+version: 1
+
+dn: ou=syntaxes,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: syntaxes
+
+dn: m-oid=1.3.6.1.4.1.2312.4.2.99,ou=objectclasses,cn=wildfly,ou=schema
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+m-oid: 1.3.6.1.4.1.2312.4.2.99
+m-may: memberOf
+m-name: groupMember
+m-typeobjectclass: AUXILIARY
+
+dn: ou=attributetypes,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: attributetypes
+
+dn: ou=normalizers,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: normalizers
+
+dn: ou=matchingruleuse,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: matchingruleuse
+
+dn: m-oid=1.3.6.1.4.1.2312.4.1.99,ou=attributetypes,cn=wildfly,ou=schema
+objectclass: top
+objectclass: metaAttributeType
+objectclass: metaTop
+m-oid: 1.3.6.1.4.1.2312.4.1.99
+m-description: Reference to group that this entry is a member of.
+m-equality: distinguishedNameMatch
+m-name: memberOf
+m-supattributetype: distinguishedName
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.12
+
+dn: cn=wildfly,ou=schema
+objectclass: top
+objectclass: metaSchema
+cn: wildfly
+m-dependencies: system
+m-dependencies: core
+
+dn: ou=comparators,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: comparators
+
+dn: ou=nameforms,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: nameforms
+
+dn: ou=matchingrules,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: matchingrules
+
+dn: ou=ditstructurerules,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: ditstructurerules
+
+dn: ou=syntaxcheckers,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: syntaxcheckers
+
+dn: ou=objectclasses,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: objectClasses
+
+dn: ou=ditcontentrules,cn=wildfly,ou=schema
+objectclass: top
+objectclass: organizationalUnit
+ou: ditcontentrules
+
+dn: m-oid=1.3.6.1.4.1.2312.4.2.100,ou=objectclasses,cn=wildfly,ou=schema
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+m-oid: 1.3.6.1.4.1.2312.4.2.100
+m-may: description
+m-name: group
+m-supobjectclass: top
+
