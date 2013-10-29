@@ -32,7 +32,13 @@
             <security-realm name="ManagementRealm">
                 <authentication>
                     <local default-user="$local"/>
-                    <properties path="mgmt-users.properties" relative-to="jboss.server.config.dir"/>
+                    <!-- 
+                         Defined User
+                              UserOne passwordone
+                    -->
+                    <ldap connection="LocalLdap" base-dn="dc=simple,dc=wildfly,dc=org">
+                       <username-filter attribute="sn"/>
+                    </ldap>
                 </authentication>
                 <authorization map-groups-to-roles="false">
                     <properties path="mgmt-groups.properties" relative-to="jboss.server.config.dir"/>
@@ -48,6 +54,9 @@
                 </authorization>
             </security-realm>
         </security-realms>
+        <outbound-connections>
+            <ldap name="LocalLdap" url="ldap://localhost:10389" search-dn="uid=wildfly,dc=simple,dc=wildfly,dc=org" search-credential="secret"/>
+        </outbound-connections>
         <audit-log>
             <formatters>
                 <json-formatter name="json-formatter"/>
