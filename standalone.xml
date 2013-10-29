@@ -34,10 +34,11 @@
                     <local default-user="$local"/>
                     <!-- 
                          Defined User
-                              UserOne passwordone
+                              user_one passwordone
+                              user_two passwordtwo
                     -->
                     <ldap connection="LocalLdap" base-dn="dc=simple,dc=wildfly,dc=org">
-                       <username-filter attribute="sn"/>
+                       <username-filter attribute="uid"/>
                     </ldap>
                 </authentication>
                 <authorization map-groups-to-roles="false">
