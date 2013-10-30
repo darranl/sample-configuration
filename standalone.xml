@@ -56,7 +56,12 @@
             </security-realm>
         </security-realms>
         <outbound-connections>
-            <ldap name="LocalLdap" url="ldap://localhost:10389" search-dn="uid=wildfly,dc=simple,dc=wildfly,dc=org" search-credential="secret"/>
+            <ldap name="LocalLdap" url="ldap://localhost:10389" search-dn="uid=wildfly,dc=simple,dc=wildfly,dc=org" search-credential="secret">
+               <properties>
+                   <property name="com.sun.jndi.ldap.connect.timeout" value="1000" />
+                   <property name="com.sun.jndi.ldap.read.timeout" value="2000" />
+               </properties>
+            </ldap>
         </outbound-connections>
         <audit-log>
             <formatters>
@@ -116,6 +121,9 @@
             </logger>
             <logger category="sun.rmi">
                 <level name="WARN"/>
+            </logger>
+            <logger category="org.jboss.as.domain.management.security">
+                <level name="TRACE" />
             </logger>
             <logger category="jacorb">
                 <level name="WARN"/>
