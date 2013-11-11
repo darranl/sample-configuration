@@ -30,6 +30,11 @@
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
+                <server-identities>
+                    <ssl>
+                        <keystore path="server.keystore" relative-to="jboss.server.config.dir" keystore-password="keystore_password" />
+                   </ssl>
+                </server-identities>
                 <authentication>
                     <local default-user="$local"/>
                     <properties path="mgmt-users.properties" relative-to="jboss.server.config.dir"/>
@@ -65,8 +70,8 @@
             <native-interface security-realm="ManagementRealm">
                 <socket-binding native="management-native"/>
             </native-interface>
-            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="true">
-                <socket-binding http="management-http"/>
+            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="false">
+                <socket-binding http="management-http" https="management-https" />
             </http-interface>
         </management-interfaces>
         <access-control provider="simple">
