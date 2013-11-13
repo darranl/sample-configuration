@@ -70,8 +70,9 @@
             <native-interface security-realm="ManagementRealm">
                 <socket-binding native="management-native"/>
             </native-interface>
-            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="false">
-                <socket-binding http="management-http" https="management-https" />
+            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="true">
+                <!-- http="management-http"    https="management-https" -->
+                <socket-binding  http="management-http" https="management-https" />
             </http-interface>
         </management-interfaces>
         <access-control provider="simple">
@@ -102,6 +103,9 @@
             </periodic-rotating-file-handler>
             <logger category="com.arjuna">
                 <level name="WARN"/>
+            </logger>
+            <logger category="org.xnio">
+                <level name="TRACE"/>
             </logger>
             <logger category="org.apache.tomcat.util.modeler">
                 <level name="WARN"/>
