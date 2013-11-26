@@ -69,11 +69,16 @@
                 <socket-binding http="management-http"/>
             </http-interface>
         </management-interfaces>
-        <access-control provider="simple">
+        <access-control provider="rbac">
             <role-mapping>
                 <role name="SuperUser">
                     <include>
                         <user name="$local"/>
+                    </include>
+                </role>
+                <role name="Administrator">
+                    <include>
+                        <user name="darranl"/>
                     </include>
                 </role>
             </role-mapping>
