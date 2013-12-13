@@ -32,7 +32,7 @@
             <security-realm name="ManagementRealm">
                 <server-identities>
                     <ssl>
-                        <keystore path="server.keystore" relative-to="jboss.server.config.dir" keystore-password="keystore_password" />
+                        <keystore path="server.keystore" relative-to="jboss.server.config.dir" keystore-password="keystore_password" alias="server" />
                    </ssl>
                 </server-identities>
                 <authentication>
