@@ -37,19 +37,19 @@
                               TestUserOne PasswordOne
                               TestUserTwo PasswordTwo
                     -->
-                    <ldap connection="LocalLdap" base-dn="ou=users,dc=group-to-principal,dc=wildfly,dc=org">
-                       <cache type="by-search-time" eviction-time="1800" cache-failures="true" max-cache-size="100" />
+                    <ldap connection="LocalLdap" base-dn="ou=users,dc=group-to-principal,dc=wildfly,dc=org" username-load="uid" > <!-- username-load="uid" -->
+                       <cache type="by-search-time" eviction-time="300" cache-failures="true" max-cache-size="25" />
                        <username-filter attribute="uid"/>
                     </ldap>
                 </authentication>
                 <authorization map-groups-to-roles="false">
                     <ldap connection="LocalLdap">
                         <username-to-dn force="true">
-                            <cache type="by-access-time" eviction-time="1700" cache-failures="true" max-cache-size="120" />
+                            <cache type="by-search-time" eviction-time="300" cache-failures="true" max-cache-size="25" />
                             <username-filter base-dn="ou=users,dc=group-to-principal,dc=wildfly,dc=org" recursive="false" attribute="uid" user-dn-attribute="dn" />
                         </username-to-dn>
                         <group-search group-name="SIMPLE" iterative="true" group-dn-attribute="dn" group-name-attribute="uid">  
-                            <cache type="by-search-time" eviction-time="800" cache-failures="false" max-cache-size="250" />
+                            <cache type="by-search-time" eviction-time="300" cache-failures="false" max-cache-size="25" />
                             <group-to-principal base-dn="ou=groups,dc=group-to-principal,dc=wildfly,dc=org" recursive="true" search-by="DISTINGUISHED_NAME">  
                                 <membership-filter principal-attribute="uniqueMember" />  
                             </group-to-principal>  
