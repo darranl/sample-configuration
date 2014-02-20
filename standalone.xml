@@ -36,6 +36,7 @@
                    </ssl>
                 </server-identities>
                 <authentication>
+                    <truststore provider="PKCS11-ServerKeyStore" keystore-password="key_password" />
                     <local default-user="$local"/>
                     <properties path="mgmt-users.properties" relative-to="jboss.server.config.dir"/>
                 </authentication>
